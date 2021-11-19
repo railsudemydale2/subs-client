@@ -1,14 +1,29 @@
 import React, { useState } from 'react';
 import Input from '../components/Input';
 import Button from '../components/Button';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const Register = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState('Dale');
+  const [email, setEmail] = useState('stewartdale073@gmail.com');
+  const [password, setPassword] = useState('B3^6#a7C');
 
-  const handleClick = async () => {
-    console.log(name, email, password);
+  const handleClick = async (e) => {
+    // console.log(name, email, password);
+    try {
+      e.preventDefault();
+      const { data } = await axios.post('/register', {
+        name,
+        email,
+        password,
+      });
+      console.log(data);
+      toast.success('Registration successful. Please login.');
+    } catch (err) {
+      console.log(err);
+      toast.error('Something went wrong. Try again');
+    }
   };
   return (
     <div className="d-flex justify-content-center" style={{ height: '80vh' }}>
@@ -35,12 +50,12 @@ const Register = () => {
             />
 
             <div className="d-grid">
-                <Button
-              handleClick={handleClick}
-              type="danger"
-              text="Register"
-              size="sm"
-            />
+              <Button
+                handleClick={handleClick}
+                type="danger"
+                text="Register"
+                size="sm"
+              />
             </div>
           </div>
         </div>
