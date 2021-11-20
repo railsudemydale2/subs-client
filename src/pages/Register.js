@@ -13,13 +13,18 @@ const Register = () => {
     // console.log(name, email, password);
     try {
       e.preventDefault();
-      const { data } = await axios.post('/register', {
+      const { data } = await axios.post('http://localhost:8002/api/register', {
         name,
         email,
         password,
       });
       console.log(data);
-      toast.success('Registration successful. Please login.');
+
+      if (data.error) {
+        toast.error(data.error);
+      } else {
+        toast.success('Registration successful. Please login.');
+      }
     } catch (err) {
       console.log(err);
       toast.error('Something went wrong. Try again');
@@ -58,10 +63,6 @@ const Register = () => {
               />
             </div>
           </div>
-        </div>
-
-        <div className="row">
-          {/* <pre>{JSON.stringify({ name, email, password }, null, 4)}</pre> */}
         </div>
       </div>
     </div>
