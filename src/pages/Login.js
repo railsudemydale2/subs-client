@@ -26,7 +26,7 @@ const Login = ({ history }) => {
         // setName('');
         setEmail('');
         setPassword('');
-
+        localStorage.setItem('auth', JSON.stringify(data));
         history.push('/');
       }
     } catch (err) {

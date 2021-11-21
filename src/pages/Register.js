@@ -27,9 +27,10 @@ const Register = ({ history }) => {
         setEmail('');
         setPassword('');
         toast.success(
-          `Attention! ${data.user.name}. You are part of team now. Congratulation Norman!!`
+          `Attention! ${data.user.name}. You are part of team now. Congratulations Norman!!`
         );
-        history.push('/login');
+        localStorage.setItem('auth', JSON.stringify(data));
+        history.push('/');
       }
     } catch (err) {
       console.log(err);
