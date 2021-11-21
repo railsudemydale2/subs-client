@@ -4,10 +4,10 @@ import Button from '../components/Button';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-const Register = () => {
-  const [name, setName] = useState('Dale');
-  const [email, setEmail] = useState('stewartdale073@gmail.com');
-  const [password, setPassword] = useState('B3^6#a7C');
+const Register = ({ history }) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleClick = async (e) => {
     // console.log(name, email, password);
@@ -23,7 +23,13 @@ const Register = () => {
       if (data.error) {
         toast.error(data.error);
       } else {
-        toast.success('Registration successful. Please login.');
+        setName('');
+        setEmail('');
+        setPassword('');
+        toast.success(
+          `Attention! ${data.user.name}. You are part of team now. Congratulation Norman!!`
+        );
+        history.push('/login');
       }
     } catch (err) {
       console.log(err);
