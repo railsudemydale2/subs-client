@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../../context';
 
-const PriceCard = ({ price }) => {
+const PriceCard = ({ price, handleSubscription }) => {
+  const [state] = useContext(UserContext);
+
   const dynamicDescription = () => {
     if (price.nickname === 'BASIC') {
       return '5 exclusive stocks';
@@ -14,17 +18,18 @@ const PriceCard = ({ price }) => {
     return price.nickname === 'BASIC' ? 'btn-outline-danger' : 'btn-danger';
   };
 
-  const handleSubscription = (price) => {
-    //
-  };
-
   const headerStyle = () => {
     return price.nickname === 'PRO' ? 'bg-danger text-light' : '';
-  }
+  };
 
   const borderStyle = () => {
     return price.nickname === 'PRO' ? 'border-danger' : '';
-  }
+  };
+
+  const buttonText = () => {
+    return state && state.token ? 'Buy this plan' : 'Sign up';
+  };
+
   return (
     <div className="col">
       <div className={`card mb-4 rounded-3 shadow-sm ${borderStyle()}`}>
@@ -49,12 +54,14 @@ const PriceCard = ({ price }) => {
 
           {/* <pre>{JSON.stringify(price, null, 4)}</pre> */}
 
-          <button
-            onClick={() => handleSubscription(price)}
-            className={`w-100 btn btn-lg ${buttonStyle()}`}
-          >
-            Sign up
-          </button>
+          <Link to="/register">
+            <button
+              // onClick={() => handleSubscription(price)}
+              className={`w-100 btn btn-lg ${buttonStyle()}`}
+            >
+              {buttonText()}
+            </button>
+          </Link>
         </div>
       </div>
     </div>
