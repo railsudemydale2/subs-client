@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { UserContext } from '../context';
 
 const Login = ({ history }) => {
   //   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  //context
+  const [state, setState] = useContext(UserContext);
 
   const handleClick = async (e) => {
     // console.log('email and password', email, password);
@@ -26,6 +29,7 @@ const Login = ({ history }) => {
         // setName('');
         setEmail('');
         setPassword('');
+        setState(data);
         localStorage.setItem('auth', JSON.stringify(data));
         history.push('/');
       }
