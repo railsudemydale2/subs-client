@@ -1,23 +1,21 @@
-import React, { useContext, useState } from 'react';
-import Input from '../components/Input';
-import Button from '../components/Button';
-import axios from 'axios';
-import toast from 'react-hot-toast';
-import { UserContext } from '../context';
+import React, { useState, useContext } from "react";
+import Input from "../components/Input";
+import Button from "../components/Button";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+import { UserContext } from "../context";
 
 const Login = ({ history }) => {
-  //   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  //context
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // context
   const [state, setState] = useContext(UserContext);
 
   const handleClick = async (e) => {
-    // console.log('email and password', email, password);
+    // console.log("email and password", email, password);
     try {
       e.preventDefault();
-      const { data } = await axios.post('http://localhost:8002/api/login', {
-        // name,
+      const { data } = await axios.post("/login", {
         email,
         password,
       });
@@ -26,20 +24,20 @@ const Login = ({ history }) => {
       if (data.error) {
         toast.error(data.error);
       } else {
-        // setName('');
-        setEmail('');
-        setPassword('');
+        setEmail("");
+        setPassword("");
         setState(data);
-        localStorage.setItem('auth', JSON.stringify(data));
-        history.push('/');
+        localStorage.setItem("auth", JSON.stringify(data));
+        history.push("/");
       }
     } catch (err) {
       console.log(err);
-      toast.error('Something went wrong. Try again');
+      toast.error("Something went wrong. Try again");
     }
   };
+
   return (
-    <div className="d-flex justify-content-center" style={{ height: '80vh' }}>
+    <div className="d-flex justify-content-center" style={{ height: "80vh" }}>
       <div className="container align-items-center d-flex">
         <div className="row col-md-6 offset-md-3 text-center">
           <h1 className="pt-5 fw-bold">Login</h1>
@@ -48,7 +46,6 @@ const Login = ({ history }) => {
           </p>
 
           <div className="form-group">
-            {/* <Input label="Name" value={name} setValue={setName} /> */}
             <Input
               label="Email"
               type="email"

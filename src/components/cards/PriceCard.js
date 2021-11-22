@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-const PriceCard = () => {
+const PriceCard = ({ price }) => {
   return (
     <div className="col">
       <div className="card mb-4 rounded-3 shadow-sm">
@@ -10,7 +10,7 @@ const PriceCard = () => {
 
         <div className="card-body">
           <h1 className="card-title pricing-card-title">
-            50$<small className="text-muted fw-light">/MONTH</small>
+            $50<small className="text-muted fw-light">/mo</small>
           </h1>
           <ul className="list-unstyled mt-3 mb-4">
             <li>5 exclusive stocks</li>
@@ -18,6 +18,8 @@ const PriceCard = () => {
             <li>Email support</li>
             <li>Help center access</li>
           </ul>
+
+          <pre>{JSON.stringify(price, null, 4)}</pre>
 
           <button className="w-100 btn btn-lg btn-outline-danger">
             Sign up
