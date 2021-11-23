@@ -1,6 +1,6 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import PriceCard from "../components/cards/PriceCard";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import PriceCard from '../components/cards/PriceCard';
 
 const Home = () => {
   const [prices, setPrices] = useState([]);
@@ -10,14 +10,14 @@ const Home = () => {
   }, []);
 
   const fetchPrices = async () => {
-    const { data } = await axios.get("/prices");
-    console.log("prices get request", data);
+    const { data } = await axios.get('/prices');
+    console.log('prices get request', data);
     setPrices(data);
   };
 
-  const handleClick = async (e) => {
+  const handleClick = async (e, price) => {
     e.preventDefault();
-    console.log("plan clicked");
+    console.log('plan clicked', price.id);
   };
 
   return (
@@ -32,7 +32,7 @@ const Home = () => {
       <div className="row pt-5 mb-3 text-center">
         {prices &&
           prices.map((price) => (
-            <PriceCard key={price.id} price={price} handleClick={handleClick} />
+            <PriceCard key={price.id} price={price} handleSubscription={handleClick} />
           ))}
       </div>
     </div>
