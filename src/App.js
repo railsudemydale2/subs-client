@@ -7,6 +7,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import StripeSuccess from './pages/stripe-success';
 import StripeCancel from './pages/stripe-cancel';
+import AuthRoute from './components/routes/AuthRoute';
 
 function App() {
   return (
@@ -17,8 +18,8 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/stripe/success" component={StripeSuccess} />
-        <Route exact path="/stripe/cancel" component={StripeCancel} />
+        <AuthRoute exact path="/stripe/success" component={StripeSuccess} />
+        <AuthRoute exact path="/stripe/cancel" component={StripeCancel} />
       </Switch>
     </Router>
   );
