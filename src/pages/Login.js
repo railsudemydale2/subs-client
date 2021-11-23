@@ -9,7 +9,7 @@ const Login = ({ history }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // context
-  const [setState] = useContext(UserContext);
+  const [state, setState] = useContext(UserContext);
 
   const handleClick = async (e) => {
     // console.log("email and password", email, password);
