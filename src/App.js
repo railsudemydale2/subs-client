@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import StripeSuccess from './pages/stripe-success';
 import StripeCancel from './pages/stripe-cancel';
 import AuthRoute from './components/routes/AuthRoute';
+import Account from './pages/Account';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <AuthRoute exact path="/stripe/success" component={StripeSuccess} />
         <AuthRoute exact path="/stripe/cancel" component={StripeCancel} />
+        <Route exact path='/account' component={Account} />
       </Switch>
     </Router>
   );
