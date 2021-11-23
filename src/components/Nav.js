@@ -31,7 +31,7 @@ const Nav = () => {
           </li>
           <ul className="dropdown-menu">
             <li className="nav-item dropdown-item">
-              <Link className="nav-link" to="'/account">
+              <Link className="nav-link" to="/account">
                 Account
               </Link>
             </li>

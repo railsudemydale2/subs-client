@@ -12,6 +12,12 @@ const PriceCard = ({ price, handleSubscription, userSubscriptions }) => {
       return '10 exclusive stocks';
     } else if (price.nickname === 'ULTIMATE') {
       return '50 exclusive stocks';
+    } else if (price.nickname === 'SUPERULTIMATE'){
+      return '100 exclusive stocks';
+    } else if (price.nickname === 'BIGTEAM'){
+      return '75 exclusive stocks';
+    } else if (price.nickname === 'SMALLTEAM'){
+      return '25 exclusive stocks';
     }
   };
   const buttonStyle = () => {
